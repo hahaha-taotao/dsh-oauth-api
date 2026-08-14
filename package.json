@@ -1,0 +1,26 @@
+{
+  "name": "dsh-oauth",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.6.2",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@dsh-plugin/oauth-host": "file:./packages/oauth-host",
+    "@dsh-plugin/oauth-client": "file:./packages/oauth-client"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

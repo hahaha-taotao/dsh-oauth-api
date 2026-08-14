@@ -1,0 +1,20 @@
+{
+  "name": "@dsh-plugin/oauth-host",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "dependencies": {
+    "@dsh-plugin/oauth": "file:../oauth",
+    "@dsh-plugin/oauth-claude": "file:../oauth-claude",
+    "@dsh-plugin/oauth-codex": "file:../oauth-codex",
+    "@dsh-plugin/oauth-xai": "file:../oauth-xai"
+  }
+}

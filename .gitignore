@@ -1,0 +1,15 @@
+node_modules/
+dist/
+lib/
+*.tsbuildinfo
+coverage/
+.DS_Store
+.env
+.credentials.yaml
+oauth/*.json
+.trellis/
+.agents/
+.codex/
+.zcode/
+.grok/
+

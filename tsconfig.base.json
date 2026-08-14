@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noImplicitAny": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "paths": {
+      "@dsh-plugin/oauth": ["./packages/oauth/src/index.ts"],
+      "@dsh-plugin/oauth-xai": ["./packages/oauth-xai/src/index.ts"],
+      "@dsh-plugin/oauth-host": ["./packages/oauth-host/src/index.ts"],
+      "@dsh-plugin/oauth-client": ["./packages/oauth-client/src/index.ts"]
+    }
+  }
+}

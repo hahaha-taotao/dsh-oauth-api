@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/oauth" },
+    { "path": "./packages/oauth-xai" },
+    { "path": "./packages/oauth-codex" },
+    { "path": "./packages/oauth-claude" },
+    { "path": "./packages/oauth-host" },
+    { "path": "./packages/oauth-client" }
+  ]
+}

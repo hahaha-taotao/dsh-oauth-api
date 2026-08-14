@@ -1,0 +1,5 @@
+- insert:
+    - id: dsh-oauth-host
+      name: '@dsh-plugin/oauth-host'
+    - id: dsh-oauth-client
+      name: '@dsh-plugin/oauth-client'
