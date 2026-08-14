@@ -54,16 +54,6 @@ Grok 令牌需要 `api:access` 权限。如果推理提示缺少该 scope，重�
 
 默认 `$DSH_HOME` 是 `~/.dsh`。
 
-## 本插件不会做的事
-
-- 读取 `~/.grok/auth.json`、`~/.codex/auth.json`、`~/.claude`、Hermes、OpenClaw、Pi 的凭据
-- 抓取 grok.com
-- 对外提供 OpenAI 兼容中转
-- 自动改默认模型
-- 提供 API Key 兜底（只走 OAuth）
-
-Anthropic 文档写明 Claude.ai / Claude Code 的 OAuth 面向官方应用。如果接口拒绝第三方客户端，请重新登录或换其他提供商。
-
 ## 开发
 
 ```bash

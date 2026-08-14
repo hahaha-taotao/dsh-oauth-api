@@ -54,16 +54,6 @@ Tokens live only in this plugin’s store:
 
 Default `$DSH_HOME` is `~/.dsh`.
 
-## What this plugin does not do
-
-- Read `~/.grok/auth.json`, `~/.codex/auth.json`, `~/.claude`, Hermes, OpenClaw, or Pi stores
-- Scrape grok.com
-- Expose a public OpenAI-compatible relay
-- Auto-select a default model
-- Accept API keys as a fallback (OAuth only)
-
-Anthropic documents Claude.ai / Claude Code OAuth as intended for official Claude apps. If the API rejects a third-party client, re-login or use another provider.
-
 ## Develop
 
 ```bash
