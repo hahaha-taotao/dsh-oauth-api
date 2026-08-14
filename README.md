@@ -14,8 +14,6 @@ After install, **Settings → OAuth 登录** shows one card per provider. Succes
 | Codex / ChatGPT | `codex-oauth` | Device code (`auth.openai.com/codex/device`) | `https://chatgpt.com/backend-api/codex` |
 | Claude Code | `claude-oauth` | PKCE: open authorize URL, paste `code#state` | `https://api.anthropic.com/v1/messages` |
 
-Models include Grok 4.6 / 4.5 / 4.3 / Build, GPT-5.6 Sol / Terra / Luna, and Claude Opus 4.6 / Sonnet 4.6 / Haiku 4.5, with reasoning effort where the vendor supports it.
-
 ## Install
 
 ```bash

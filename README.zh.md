@@ -14,8 +14,6 @@
 | Codex / ChatGPT | `codex-oauth` | 设备码（`auth.openai.com/codex/device`） | `https://chatgpt.com/backend-api/codex` |
 | Claude Code | `claude-oauth` | PKCE：打开授权页，粘贴 `code#state` | `https://api.anthropic.com/v1/messages` |
 
-模型包括 Grok 4.6 / 4.5 / 4.3 / Build、GPT-5.6 Sol / Terra / Luna、Claude Opus 4.6 / Sonnet 4.6 / Haiku 4.5，并在厂商支持时提供推理强度。
-
 ## 安装
 
 ```bash
