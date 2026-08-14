@@ -15,6 +15,7 @@
     "@dsh-plugin/oauth": "file:../oauth",
     "@dsh-plugin/oauth-claude": "file:../oauth-claude",
     "@dsh-plugin/oauth-codex": "file:../oauth-codex",
+    "@dsh-plugin/oauth-kimi": "file:../oauth-kimi",
     "@dsh-plugin/oauth-xai": "file:../oauth-xai"
   }
 }

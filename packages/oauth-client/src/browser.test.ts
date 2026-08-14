@@ -13,6 +13,7 @@ describe('browser client bundle', () => {
     expect(source).toContain('OAuth 登录')
     expect(source).toContain("id: 'codex'")
     expect(source).toContain("id: 'claude'")
+    expect(source).toContain("id: 'kimi'")
     expect(source).toContain('host leaked token fields')
   })
 })

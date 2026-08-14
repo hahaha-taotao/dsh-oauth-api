@@ -13,6 +13,7 @@ After install, **Settings → OAuth 登录** shows one card per provider. Succes
 | Grok / xAI | `xai-oauth` | Device code (`auth.x.ai`) | `https://api.x.ai/v1/responses` |
 | Codex / ChatGPT | `codex-oauth` | Device code (`auth.openai.com/codex/device`) | `https://chatgpt.com/backend-api/codex` |
 | Claude Code | `claude-oauth` | PKCE: open authorize URL, paste `code#state` | `https://api.anthropic.com/v1/messages` |
+| Kimi Code | `kimi-oauth` | Device code (`auth.kimi.com`) | `https://api.kimi.com/coding/v1` |
 
 ## Install
 
@@ -38,7 +39,7 @@ You should see `dsh-oauth-host` and `dsh-oauth-client`.
 2. Open **Settings → OAuth 登录**
 3. Click **登录** on a provider card
 4. Finish the browser step (device code, or paste Claude’s `code#state`)
-5. Select the matching group in the model picker (`xai-oauth`, `codex-oauth`, or `claude-oauth`)
+5. Select the matching group in the model picker (`xai-oauth`, `codex-oauth`, `claude-oauth`, or `kimi-oauth`)
 
 Grok tokens need the `api:access` scope. If inference says the scope is missing, log in again.
 
@@ -49,6 +50,7 @@ Tokens live only in this plugin’s store:
 - `$DSH_HOME/oauth/xai.json`
 - `$DSH_HOME/oauth/codex.json`
 - `$DSH_HOME/oauth/claude.json`
+- `$DSH_HOME/oauth/kimi.json`
 
 Default `$DSH_HOME` is `~/.dsh`.
 

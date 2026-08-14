@@ -193,6 +193,11 @@ window.__ModuleLoader__.load({
             hint: 'Claude Pro / Max。打开授权页后把 code#state 贴回来。',
             pasteCode: true,
           }),
+          jsx(ProviderCard, {
+            id: 'kimi',
+            title: 'Kimi Code',
+            hint: 'Kimi 会员 / Kimi Code 订阅。打开 auth.kimi.com 输入验证码。',
+          }),
         ],
       })
     }

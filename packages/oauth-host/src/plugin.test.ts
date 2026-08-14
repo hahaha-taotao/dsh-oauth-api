@@ -42,7 +42,7 @@ describe('host plugin apply', () => {
     }
     apply(ctx)
     expect(registered.length).toBeGreaterThan(0)
-    expect(adapters).toEqual([['xai-oauth'], ['codex-oauth'], ['claude-oauth']])
+    expect(adapters).toEqual([['xai-oauth'], ['codex-oauth'], ['claude-oauth'], ['kimi-oauth']])
     expect(defaultModelWrites).toBe(0)
   })
 })

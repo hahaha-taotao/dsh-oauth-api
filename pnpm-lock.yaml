@@ -61,9 +61,18 @@ importers:
       '@dsh-plugin/oauth-codex':
         specifier: file:../oauth-codex
         version: link:../oauth-codex
+      '@dsh-plugin/oauth-kimi':
+        specifier: file:../oauth-kimi
+        version: link:../oauth-kimi
       '@dsh-plugin/oauth-xai':
         specifier: file:../oauth-xai
         version: link:../oauth-xai
+
+  packages/oauth-kimi:
+    dependencies:
+      '@dsh-plugin/oauth':
+        specifier: file:../oauth
+        version: link:../oauth
 
   packages/oauth-xai:
     dependencies:

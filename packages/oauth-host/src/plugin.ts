@@ -10,6 +10,10 @@ import {
   DEFAULT_CODEX_BASE_URL,
 } from '@dsh-plugin/oauth-codex'
 import {
+  createKimiOAuthProvider,
+  DEFAULT_KIMI_BASE_URL,
+} from '@dsh-plugin/oauth-kimi'
+import {
   createProxyAwareFetch,
   createXaiOAuthProvider,
   DEFAULT_XAI_AUTHORIZATION_SERVER,
@@ -19,10 +23,12 @@ import {
 import { XaiOauthAdapter, XAI_OAUTH_ROUTE } from './adapter.js'
 import { CodexOauthAdapter, CODEX_OAUTH_ROUTE } from './codex-adapter.js'
 import { ClaudeOauthAdapter, CLAUDE_OAUTH_ROUTE } from './claude-adapter.js'
+import { KimiOauthAdapter, KIMI_OAUTH_ROUTE } from './kimi-adapter.js'
 import {
   handleOAuthHttp,
   CLAUDE_OAUTH_ACCESS_TOKEN_REF,
   CODEX_OAUTH_ACCESS_TOKEN_REF,
+  KIMI_OAUTH_ACCESS_TOKEN_REF,
   XAI_OAUTH_ACCESS_TOKEN_REF,
 } from './http.js'
 import { renderXaiSettingsPage } from './page.js'
@@ -39,6 +45,7 @@ export interface HostConfig {
   codexClientId?: string
   codexBaseURL?: string
   claudeBaseURL?: string
+  kimiBaseURL?: string
 }
 
 export function resolveHostConfig(raw: HostConfig = {}) {
@@ -51,6 +58,7 @@ export function resolveHostConfig(raw: HostConfig = {}) {
     codexClientId: raw.codexClientId,
     codexBaseURL: raw.codexBaseURL ?? DEFAULT_CODEX_BASE_URL,
     claudeBaseURL: raw.claudeBaseURL ?? DEFAULT_CLAUDE_BASE_URL,
+    kimiBaseURL: raw.kimiBaseURL ?? DEFAULT_KIMI_BASE_URL,
   }
 }
 
@@ -75,6 +83,9 @@ export function apply(ctx: HostContext, raw: HostConfig = {}): void {
   const claudeProvider = createClaudeOAuthProvider({
     fetch: proxyFetch,
   })
+  const kimiProvider = createKimiOAuthProvider({
+    fetch: proxyFetch,
+  })
   const credentials = {
     async set(ref: string, value: string) {
       await ctx.credentials.set(ref, value)
@@ -90,16 +101,15 @@ export function apply(ctx: HostContext, raw: HostConfig = {}): void {
   }
 
   const manager = createOAuthSessionManager({
-    providers: [provider, codexProvider, claudeProvider],
+    providers: [provider, codexProvider, claudeProvider, kimiProvider],
     store,
     async onAccessToken(providerId: string, accessToken: string | undefined) {
-      const ref = providerId === 'xai'
-        ? XAI_OAUTH_ACCESS_TOKEN_REF
-        : providerId === 'codex'
-          ? CODEX_OAUTH_ACCESS_TOKEN_REF
-          : providerId === 'claude'
-            ? CLAUDE_OAUTH_ACCESS_TOKEN_REF
-            : undefined
+      const ref = {
+        xai: XAI_OAUTH_ACCESS_TOKEN_REF,
+        codex: CODEX_OAUTH_ACCESS_TOKEN_REF,
+        claude: CLAUDE_OAUTH_ACCESS_TOKEN_REF,
+        kimi: KIMI_OAUTH_ACCESS_TOKEN_REF,
+      }[providerId]
       if (!ref) return
       if (accessToken) await credentials.set(ref, accessToken)
       else await credentials.unset(ref)
@@ -137,6 +147,16 @@ export function apply(ctx: HostContext, raw: HostConfig = {}): void {
     ctx.llm.registerAdapter([CLAUDE_OAUTH_ROUTE], claudeAdapter)
   } catch (error) {
     console.error('[dsh-oauth-host] registerAdapter(claude-oauth) failed', error)
+  }
+  const kimiAdapter = new KimiOauthAdapter({
+    sessions: manager,
+    baseURL: config.kimiBaseURL,
+    fetch: proxyFetch,
+  })
+  try {
+    ctx.llm.registerAdapter([KIMI_OAUTH_ROUTE], kimiAdapter)
+  } catch (error) {
+    console.error('[dsh-oauth-host] registerAdapter(kimi-oauth) failed', error)
   }
 
   const htmlPage = renderXaiSettingsPage()

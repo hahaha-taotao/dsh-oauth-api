@@ -5,6 +5,7 @@
     { "path": "./packages/oauth-xai" },
     { "path": "./packages/oauth-codex" },
     { "path": "./packages/oauth-claude" },
+    { "path": "./packages/oauth-kimi" },
     { "path": "./packages/oauth-host" },
     { "path": "./packages/oauth-client" }
   ]

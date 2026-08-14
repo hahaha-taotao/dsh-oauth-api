@@ -7,11 +7,5 @@
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.test.ts"],
-  "references": [
-    { "path": "../oauth" },
-    { "path": "../oauth-xai" },
-    { "path": "../oauth-codex" },
-    { "path": "../oauth-claude" },
-    { "path": "../oauth-kimi" }
-  ]
+  "references": [{ "path": "../oauth" }]
 }

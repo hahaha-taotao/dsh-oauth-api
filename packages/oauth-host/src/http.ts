@@ -3,11 +3,13 @@ import { ProviderId, type OAuthSessionManager, type SessionSnapshot } from '@dsh
 export const XAI_OAUTH_ACCESS_TOKEN_REF = 'XAI_OAUTH_ACCESS_TOKEN'
 export const CODEX_OAUTH_ACCESS_TOKEN_REF = 'CODEX_OAUTH_ACCESS_TOKEN'
 export const CLAUDE_OAUTH_ACCESS_TOKEN_REF = 'CLAUDE_OAUTH_ACCESS_TOKEN'
+export const KIMI_OAUTH_ACCESS_TOKEN_REF = 'KIMI_OAUTH_ACCESS_TOKEN'
 
 const PROVIDERS = {
   xai: { accessRef: XAI_OAUTH_ACCESS_TOKEN_REF },
   codex: { accessRef: CODEX_OAUTH_ACCESS_TOKEN_REF },
   claude: { accessRef: CLAUDE_OAUTH_ACCESS_TOKEN_REF },
+  kimi: { accessRef: KIMI_OAUTH_ACCESS_TOKEN_REF },
 } as const
 
 type OauthProviderName = keyof typeof PROVIDERS
@@ -93,7 +95,7 @@ export async function handleOAuthHttp(input: {
 }
 
 function parseOauthPath(path: string): { provider: OauthProviderName; action: string } | undefined {
-  const match = /^\/dsh-oauth\/(xai|codex|claude)(?:\/([^/]*))?$/.exec(path)
+  const match = /^\/dsh-oauth\/(xai|codex|claude|kimi)(?:\/([^/]*))?$/.exec(path)
   if (!match) return undefined
   return { provider: match[1] as OauthProviderName, action: match[2] ?? '' }
 }

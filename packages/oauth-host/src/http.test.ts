@@ -142,6 +142,37 @@ describe('OAuth host HTTP', () => {
     expect(text).not.toContain('secret-')
   })
 
+  it('starts Kimi login on the shared /dsh-oauth prefix', async () => {
+    const manager = createOAuthSessionManager({
+      providers: [
+        provider(),
+        {
+          id: ProviderId('kimi'),
+          displayName: 'Kimi Code',
+          startDeviceCode: async () => ({
+            deviceCode: 'secret-dev',
+            userCode: 'KIMI-CODE',
+            verificationUri: 'https://auth.kimi.com/device',
+            expiresAt: Date.now() + 60_000,
+            intervalMs: 50_000,
+          }),
+          pollToken: async () => ({ status: 'pending' }),
+          refresh: async () => tokens(),
+        },
+      ],
+      store: createMemoryTokenStore(),
+    })
+    const response = await invoke(manager, {
+      method: 'POST',
+      url: '/dsh-oauth/kimi/login',
+      origin: 'http://127.0.0.1:3080',
+    })
+    expect(response.status).toBe(200)
+    const text = JSON.stringify(response.body)
+    expect(text).toContain('KIMI-CODE')
+    expect(text).not.toContain('secret-')
+  })
+
   it('logout clears the session', async () => {
     const store = createMemoryTokenStore()
     await store.write({

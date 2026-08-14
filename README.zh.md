@@ -13,6 +13,7 @@
 | Grok / xAI | `xai-oauth` | 设备码（`auth.x.ai`） | `https://api.x.ai/v1/responses` |
 | Codex / ChatGPT | `codex-oauth` | 设备码（`auth.openai.com/codex/device`） | `https://chatgpt.com/backend-api/codex` |
 | Claude Code | `claude-oauth` | PKCE：打开授权页，粘贴 `code#state` | `https://api.anthropic.com/v1/messages` |
+| Kimi Code | `kimi-oauth` | 设备码（`auth.kimi.com`） | `https://api.kimi.com/coding/v1` |
 
 ## 安装
 
@@ -38,7 +39,7 @@ dsh --profile web --dump-config
 2. 打开 **设置 → OAuth 登录**
 3. 在对应卡片点 **登录**
 4. 完成浏览器步骤（设备码，或把 Claude 的 `code#state` 贴回来）
-5. 在模型选择器里选对应分组（`xai-oauth`、`codex-oauth` 或 `claude-oauth`）
+5. 在模型选择器里选对应分组（`xai-oauth`、`codex-oauth`、`claude-oauth` 或 `kimi-oauth`）
 
 Grok 令牌需要 `api:access` 权限。如果推理提示缺少该 scope，重新登录一次。
 
@@ -49,6 +50,7 @@ Grok 令牌需要 `api:access` 权限。如果推理提示缺少该 scope，重�
 - `$DSH_HOME/oauth/xai.json`
 - `$DSH_HOME/oauth/codex.json`
 - `$DSH_HOME/oauth/claude.json`
+- `$DSH_HOME/oauth/kimi.json`
 
 默认 `$DSH_HOME` 是 `~/.dsh`。
 
